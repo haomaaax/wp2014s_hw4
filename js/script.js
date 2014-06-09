@@ -31,14 +31,17 @@ FB.getLoginStatus(function(response) {
   if (response.status === 'connected') {
     //呼叫api把圖片放到#preview IMG tag 內
     window.authToken=response.authResponse.accessToken;
+    FB.api('/me/picture',function(response){
+		$("#preview1").attr("src",response.data.url);
+	})
     
   } else if (response.status === 'not_authorized') {
     //要求使用者登入，索取publish_actions權限
-	  FB.login();
+	  login();
 
   } else {
     //同樣要求使用者登入
-    FB.login();
+    login();
   }
  });
 
