@@ -4,19 +4,6 @@
 這檔案協助你編寫JS，請注意每個code block的使用，若你對自己的javascript很有信心，或是你認為我寫的方式有bug，歡迎自行修改編排
 */
 
-function login(){
-  FB.login(function(response){
-    if(response.authResponse){
-      FB.api("/me",function(response){
-			window.location.reload();
-			window.authToken=response.authResponse.accessToken})
-    }
-    else {
-    }
-  },{scope:"publish_actions"});
-  
-}
-
 window.fbAsyncInit = function () {//facebook init
     
 //輸入基本的Facebook init的狀態，與Facebook 連接，包括APP ID的設定
@@ -37,13 +24,25 @@ FB.getLoginStatus(function(response) {
     
   } else if (response.status === 'not_authorized') {
     //要求使用者登入，索取publish_actions權限
-	  login();
+    	login();
 
   } else {
     //同樣要求使用者登入
-    login();
+    	login();
   }
  });
+
+
+function login(){
+  FB.login(function(response){
+    if(response.authResponse){
+	window.location.reload();
+    }
+    else {
+    }
+  },{scope:"publish_actions"});
+}
+
 
 
 //以下為canvas的程式碼，基本上不需多動，依據comments修改即可
@@ -51,7 +50,7 @@ FB.getLoginStatus(function(response) {
 	//起始畫面
 	var ctx = document.getElementById('canvas').getContext('2d'); //宣告變數找到頁面的canvas標籤的2d內容
 	ctx.font='20px "Arial"'; //設定字體與大小
-	ctx.fillText("Drag to start fill with Facebook Profile Picture", 40, 270); //設定預設的開始畫面
+	ctx.fillText("Drag to start fill with Facebook Profile Picture", 60, 270); //設定預設的開始畫面
 	  var img = new Image(); // 新增圖像1
 	 img.src = "img/overlay2.png"; //圖像路徑（路徑自己設，且自己加入想要的圖層）
 	var img2 = new Image(); //新增圖像2
