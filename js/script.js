@@ -106,7 +106,7 @@ function login(){
 			// 自定照片位置
 			ctx.drawImage(profileIMG,canMouseX+50/2,canMouseY+50/2);//從XY軸0，0值開始畫如profileimg
 			
-			ctx.drawImage(img1,0,0); //劃入img1
+			ctx.drawImage(img,0,0); //劃入img1
 			ctx.drawImage(img2,0,0); //劃入img2
 			ctx.drawImage(img3,canMouseX-50/2,canMouseY-50/2); //劃入img3，並根據你的滑鼠游標移動，你可以自行更換想要移動的圖層，數值會因XY軸向有所不同
 			
