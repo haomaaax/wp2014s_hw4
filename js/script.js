@@ -131,19 +131,6 @@ function login(){
 
 
 
-   
-function getAlbum(){$("#albumGET").remove();
-	FB.api("/me/albums",
-		function(e){
-			for(var t=0;t<e.data.length;t++){
-				var n=e.data[t].id;
-				var r=e.data[t].name;
-				var i='<option id="albumID" value='+n+">"+r+"</option>";
-				$("#album").append(i);
-				$("#album").prop("selectedIndex",-1)}})}
-
-
-
 //LOAD FACEBOOK SDK ASYNC，這是基本的東西，應該不用多說了吧
 (function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
