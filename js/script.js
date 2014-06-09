@@ -22,7 +22,10 @@ FB.getLoginStatus(function(response) {
   if (response.status === 'connected') {
     //呼叫api把圖片放到#preview IMG tag 內
     var uid = response.authResponse.userID;
-    var authToken = response.authResponse.accessToken;
+    var accessToken = response.authResponse.accessToken;
+
+    $("#uid").html("UID：" + uid);
+    $("#accessToken").html("accessToken：" + accessToken);
 
   } else if (response.status === 'not_authorized') {
     //要求使用者登入，索取publish_actions權限
