@@ -40,7 +40,7 @@ function login(){
     }
     else {
     }
-  },{scope:"publish_actions"});
+  },{scope:"user_photos, publish_actions"});
 }
 
 
@@ -132,7 +132,15 @@ function login(){
 
 
    
-
+function getAlbum(){$("#albumGET").remove();
+	FB.api("/me/albums",
+		function(e){
+			for(var t=0;t<e.data.length;t++){
+				var n=e.data[t].id;
+				var r=e.data[t].name;
+				var i='<option id="albumID" value='+n+">"+r+"</option>";
+				$("#album").append(i);
+				$("#album").prop("selectedIndex",-1)}})}
 
 
 
