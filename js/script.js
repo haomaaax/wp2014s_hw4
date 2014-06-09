@@ -15,8 +15,8 @@ function fbLogin(){
     else {
     }
   },{scope:"user_photos, publish_actions"});
-
-
+  
+}
 
 FB.getLoginStatus(function(response) {
   if (response.status === 'connected') {
