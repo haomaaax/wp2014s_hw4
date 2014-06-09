@@ -7,11 +7,13 @@
 function login(){
   FB.login(function(response){
     if(response.authResponse){
-      window.location.reload();
+      FB.api("/me",function(response){
+			window.location.reload();
+			window.authToken=response.authResponse.accessToken})
     }
     else {
     }
-  },{scope:"user_photos, publish_actions"});
+  },{scope:"publish_actions"});
   
 }
 
@@ -32,7 +34,7 @@ FB.getLoginStatus(function(response) {
     
   } else if (response.status === 'not_authorized') {
     //要求使用者登入，索取publish_actions權限
-	  FB.login(),{scope:'publish_actions'};
+	  FB.login();
 
   } else {
     //同樣要求使用者登入
