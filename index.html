@@ -4,15 +4,15 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Max Chen's NCCU Web programming hw4</title>
+    <title>Max Chen's hw4</title>
     
-    <meta property="og:title" content="Max Chen's NCCU Web programming hw4" >
+    <meta property="og:title" content="Max Chen's hw4" >
     <meta property="og:type" content="website" >
     <meta property="og:url" content="http://msyanzi.github.io/wp2014s_hw4/" >
     <meta property="og:image" content="https://scontent-b-hkg.xx.fbcdn.net/hphotos-xpa1/t1.0-9/1239393_833604559990300_123228440042427523_n.jpg" >
     
     
-    <meta name="description" content=" ">
+    <meta name="description" content="Max Chen's NCCU Web programming hw4">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="css/style.css">
 
@@ -27,6 +27,7 @@
 
     <section id="main">
         <h2>This is a HTML5 Canvas Pages with Facebook</h2>
+        <img id="preview1" src="" crossorigin="Anonymous"></img>
         <canvas width="540" height="540" id="canvas"></canvas>
     </section>
     <div class="inputtext" style="width:600px; margin:0 auto;">
@@ -34,17 +35,27 @@
             <textarea name="inputed" maxlength="6" id="inputed" placeholder="限輸6字"></textarea><!-- 提供使用者輸入文字欄-->
         </label>
         <br>
-        <button id="sentimg" onClick="PostImageToFacebook(response.authResponse.accessToken)">Post to Facebook</button><!-- 傳送按鈕-->
+        <!-- pass the window.authToken to function-->
+        <button id="sentimg" onClick="PostImageToFacebook(window.authToken)">Post to Facebook</button><!-- 傳送按鈕-->
     </div>
     <div class="info"></div><!-- 訊息欄位-->
-
-	<div class="fb-like" data-send="true" data-width="450" data-show-faces="true"></div>
-   
-   <img id="preview1" src="" crossorigin="Anonymous"></img>
+    
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="true"></div>
    
     <script type="text/javascript" src="js/script.js"></script>
     
 </body>
+
+<!--like button-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&appId=716140558443245&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 
 </html>
 
