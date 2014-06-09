@@ -42,49 +42,25 @@
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
        
-       FB.ui(
- {
-  method: 'feed'
- }
-);
-
-	FB.ui(
-      {
-       method: 'feed',
-       name: 'The Facebook SDK for Javascript',
-       caption: 'Bringing Facebook to the desktop and mobile web',
-       description: (
-          'A small JavaScript library that allows you to harness ' +
-          'the power of Facebook, bringing the user\'s identity, ' +
-          'social graph and distribution power to your site.'
-       ),
-       link: 'https://developers.facebook.com/docs/reference/javascript/',
-       picture: 'http://www.fbrell.com/public/f8.jpg'
-      },
-      function(response) {
-        if (response && response.post_id) {
-          alert('Post was published.');
-        } else {
-          alert('Post was not published.');
-        }
-      }
-    );
-       
        FB.getLoginStatus(function(response) {
   if (response.status === 'connected') {
-    console.log('Logged in.');
+    // the user is logged in and has authenticated your
+    // app, and response.authResponse supplies
+    // the user's ID, a valid access token, a signed
+    // request, and the time the access token 
+    // and signed request each expire
+    var uid = response.authResponse.userID;
+    var accessToken = response.authResponse.accessToken;
+  } else if (response.status === 'not_authorized') {
+    // the user is logged in to Facebook, 
+    // but has not authenticated your app
+  } else {
+  	FB.login();
+    // the user isn't logged in to Facebook.
   }
-  else {
-    FB.login();
-  }
-  
-  FB.login(function(){}, {scope: 'publish_actions'});
-  
-  FB.login(function(){
- FB.api('/me/feed', 'post', {message: 'test'});
-}, {scope: 'publish_actions'});
+ });
 
-});
+
 
     </script>
 
