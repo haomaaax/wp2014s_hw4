@@ -5,18 +5,30 @@
 window.fbAsyncInit = function () {//facebook init
     
 //輸入基本的Facebook init的狀態，與Facebook 連接，包括APP ID的設定
-
+function fbLogin(){
+  FB.login(function(response){
+    if(response.authResponse){
+      window.location.reload();
+    }
+    else {
+    }
+  },{scope:"user_photos, publish_actions"});
+}
 
 
 FB.getLoginStatus(function(response) {
   if (response.status === 'connected') {
     //呼叫api把圖片放到#preview IMG tag 內
-    
+    var uid = response.authResponse.userID;
+    var authToken = response.authResponse.accessToken;
+
   } else if (response.status === 'not_authorized') {
     //要求使用者登入，索取publish_actions權限
-	
+	  FB.login(),{scope:'publish_actions'};
+
   } else {
     //同樣要求使用者登入
+    FB.login();
   }
  });
 
@@ -35,7 +47,6 @@ FB.getLoginStatus(function(response) {
 	img3.src = "img/typography.png"//圖像路徑
 	
 	
-
 	//宣告基本變數
     var canvas=document.getElementById("canvas"); //宣告變數找到canvas標籤
     var ctx=canvas.getContext("2d"); //找到2d內容
@@ -163,9 +174,6 @@ function PostImageToFacebook(authToken) {
     }
 }
 
-
-
-
 // Convert a data URI to blob把影像載入轉換函數
 function dataURItoBlob(dataURI) {
     var byteString = atob(dataURI.split(',')[1]);
@@ -178,7 +186,4 @@ function dataURItoBlob(dataURI) {
         type: 'image/png'
     });
 }
-
-
-
 
