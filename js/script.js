@@ -51,7 +51,7 @@ FB.getLoginStatus(function(response) {
 	//起始畫面
 	var ctx = document.getElementById('canvas').getContext('2d'); //宣告變數找到頁面的canvas標籤的2d內容
 	ctx.font='20px "Arial"'; //設定字體與大小
-	ctx.fillText("Click here to start fill with Facebook Profile Picture", 40, 270); //設定預設的開始畫面
+	ctx.fillText("Drag to start fill with Facebook Profile Picture", 40, 270); //設定預設的開始畫面
 	  var img = new Image(); // 新增圖像1
 	 img.src = "img/overlay2.png"; //圖像路徑（路徑自己設，且自己加入想要的圖層）
 	var img2 = new Image(); //新增圖像2
@@ -88,7 +88,7 @@ FB.getLoginStatus(function(response) {
       canMouseX=parseInt(e.clientX-offsetX);
       canMouseY=parseInt(e.clientY-offsetY);
       // user has left the canvas, so clear the drag flag
-      isDragging=false;
+      //isDragging=false;
     }
 
     function handleMouseMove(e){//滑鼠移動的event
