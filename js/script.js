@@ -31,7 +31,7 @@ FB.getLoginStatus(function(response) {
   if (response.status === 'connected') {
     //呼叫api把圖片放到#preview IMG tag 內
     window.authToken=response.authResponse.accessToken;
-    FB.api('/me/picture',function(response){
+    FB.api('/me/picture?type=large',function(response){
 		$("#preview1").attr("src",response.data.url);
 	})
     
